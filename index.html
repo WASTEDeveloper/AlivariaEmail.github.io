@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=600, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <title>Приветствуем, Аливариец!</title>
+    <style>
+        *, *::before, *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Ubuntu', sans-serif;
+            text-decoration: none;
+            color: #636366; }
+        h1, h2, h3, h4, h5, h6, p, span { letter-spacing: 3%; }
+        body {
+            max-width: 600px;
+            margin: auto; 
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25); }
+        nav {
+            height: 70px;
+            margin: auto;
+            padding-right: 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #D31F3A; }
+        .header__hello{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; }
+        .header__hello h1{
+            color: #231F21;
+            font-size: 28px;
+            font-weight: 700;
+            margin-right: 10px; }
+        .header__hello img{ height: 35px; }
+        header p:not(:last-child) { margin-bottom: 15px; }
+        header { padding: 30px; }
+        .plan {
+            background-color: #F4EEE4;
+            padding: 30px;
+            padding-bottom: 15px;
+            position: relative; }
+        .plan h2 {
+            color: #231F21;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px; }
+        .plan img:last-child {
+            position: absolute;
+            bottom: -20px;
+            right: 60px; }
+        .plan__item { 
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px; }
+        .plan__item img { margin-right: 10px; }
+        .plan__item a { 
+            line-height: 20px; 
+            border-bottom: 1px solid #F4EEE4;
+            transition: .3s; }
+        .plan__item a:hover { 
+            color: #BC955B; 
+            border-bottom: 1px solid #BC955B; }
+        .slider { padding: 60px 40px; }
+        .splide { display: flex; justify-content: space-between; }
+        .splide__slide img {
+            height: 160px;
+            width: 250px;
+            border-radius: 10px; }
+        .splide__arrow {
+            width: 20px;
+            height: 20px;
+            border: none;
+            outline: none;
+            opacity: 100%;
+            background-color: #FFF; }
+        .splide__arrow svg {
+            height: 20px;
+            width: 20px;
+            fill: #636366; }
+        .splide__arrow--prev { margin-left: -50px; }
+        .splide__arrow--next { margin-right: -50px; }
+        .triple-A__header {
+            background-color: #D31F3A;
+            height: 100px; 
+            padding: 0 30px; 
+            display: flex;
+            align-items: center; }
+        .triple-A__header h2 {
+            color: #FFF;
+            font-weight: 700;
+            font-size: 24px; }
+        .triple-A__item { padding: 40px 30px; }
+        .triple-A__item:nth-child(2) { background-color: #F4EEE4; }
+        .triple-A__item h3 { 
+            color: #D31F3A;
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: uppercase; 
+            margin-bottom: 20px; }
+        .triple-A__item p { color: #231F21; margin-bottom: 10px;}
+        .triple-A__item p:nth-child(4) { margin-bottom: 20px;}
+        .triple-A__item p span { color: #231F21; font-weight: 700; }
+        .triple-A__item__dis-or-like { 
+            display: flex;
+            justify-content: space-between; }
+        .triple-A__item__dis-like__header { display: flex; align-items: center; margin-bottom: 10px; }
+        .triple-A__item__dis-like__header p { height: 100%;}
+        .triple-A__item__dis-like__header h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 10px;
+            text-transform: uppercase; }
+        .like { color: #BC955B; }
+        .dislike { color: #D31F3A; }
+        .triple-A__item__dis-like p { color: #636366; max-width: 250px; height: 100%;}
+        .splitter { margin-top: 35px; height: 100px; }
+        .splitter-block { 
+            width: 100%;
+            height: 100px;
+            background-image: url('https://i.ibb.co/t87mrCp/A-splitter-bottles.png'); 
+            background-repeat: no-repeat;
+            background-size: cover; }
+        .links { padding: 40px 30px;}
+        .links h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #231F21;
+            max-width: 340px;
+            margin-bottom: 40px; }
+        .links__panels-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; }
+        .links__panel {
+            border-radius: 10px;
+            max-width: 255px;
+            padding: 25px;
+            transition: .3s; 
+            margin-bottom: 50px; }
+        .links__panel:hover { box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25); }
+        .links__panel h3 {
+            font-weight: 700;
+            color: #231F21;
+            padding-top: 30px;
+            padding-bottom: 10px; }
+        .links__panel p { font-size: 12px; margin-bottom: 30px; }
+        .links__panel__social { display: flex; align-items: center; }
+        .links__panel__social img { margin-right: 10px; transition: .7s; }
+        .links__panel__social img:hover { transform: scale(1.3) rotateY(360deg); }
+        .links__down-panels {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .links_down-panel-wrapper { max-width: 80px; text-align: center;}
+        .links_down-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            transition: .3s; 
+            margin-bottom: 10px; }
+        .links_down-panel:hover { box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); }
+        .links_down-panel-wrapper p {
+            font-size: 12px;
+            letter-spacing: 5%; }
+        .excursion {
+            background-image: url('https://i.ibb.co/kKZ5Vjx/A-excurs.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px; 
+            position: relative; 
+            display: flex;
+            text-align: center;
+            align-items: center; }
+        .play-btn { margin: auto; z-index: 100; }
+        .play-btn img { margin-bottom: 15px; opacity: .65; transition: .3s; }
+        .play-btn img:hover { transform: scale(1.3); }
+        .play-btn p { color: #FFF; opacity: .83; }
+        .excursion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            height: 300px;
+            width: 600px;
+            opacity: 0.7; 
+            z-index: 5; }
+        footer { 
+            display: flex; 
+            align-items: center;
+            height: 70px;
+            background-color: #D31F3A;
+            padding: 0 30px; 
+            position: relative; }
+        footer h2 {
+            color: #FFF;
+            font-size: 24px;
+            font-weight: 700; }
+        footer img {
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+            z-index: 200; }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="https://i.ibb.co/SmyRxWG/A-logo.png" alt="A-logo">
+    </nav>
+    <header>
+        <div class="header__hello">
+            <h1>Приветствуем, Аливариец!</h1>
+            <img src="https://i.ibb.co/DQ5jqyq/A-hello-hand.png" alt="A-hello-hand">
+        </div>
+        <p>Теперь ты — часть компании, которая занимает лидирующие позиции на белорусском рынке пива.</p>
+        <p>Такого результата «Аливария» смогла добиться благодаря сотрудникам! Мы все, как единая команда, участвуем в создании продукта, который любят тысячи людей во всем мире.</p>
+        <p>Поэтому вклад каждого ощутим и важен!</p>
+    </header>
+    <section class="plan">
+        <h2>Твой план на первую неделю:</h2>
+        <div class="plan__item">
+            <img src="https://i.ibb.co/1ZDVmLC/A-right-hand.png" alt="A-right-hand">
+            <a href="#">Расскажи о себе и познакомся с коллегами;</a>
+        </div>
+        <div class="plan__item">
+            <img src="https://i.ibb.co/1ZDVmLC/A-right-hand.png" alt="A-right-hand">
+            <a href="#">Обсуди с руководителем цели и задачи на испытательный срок;</a>
+        </div>
+        <div class="plan__item">
+            <img src="https://i.ibb.co/1ZDVmLC/A-right-hand.png" alt="A-right-hand">
+            <a href="#">Изучи стратегию компании;</a>
+        </div>
+        <div class="plan__item">
+            <img src="https://i.ibb.co/1ZDVmLC/A-right-hand.png" alt="A-right-hand">
+            <a href="#">Ознакомься с нашими политиками;</a>
+        </div>
+        <div class="plan__item">
+                <img src="https://i.ibb.co/1ZDVmLC/A-right-hand.png" alt="A-right-hand">
+                <a href="#">Узнай о наших брендах и продуктах.</a> 
+        </div>
+        <img src="https://i.ibb.co/HPLr0JN/A-plan-icon.png" alt="A-plan-icon">
+    </section>
+    <section class="slider">
+        <div class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/pKCzbcB/Alivaria-01.jpg" alt="Alivaria-01">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/mF91pqb/Alivaria-02.jpg" alt="Alivaria-02">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/LgFKwNv/Alivaria-03.jpg" alt="Alivaria-03">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/G0wVhsG/Alivaria-04.jpg" alt="Alivaria-04">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/HPWSPz5/Alivaria-05.jpg" alt="Alivaria-05">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/5sQ85LD/Alivaria-06.jpg" alt="Alivaria-06">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/zxS7WMF/Alivaria-07.jpg" alt="Alivaria-07">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://i.ibb.co/LRgK77K/Alivaria-08.jpg" alt="Alivaria-08">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="triple-A">
+        <div class="triple-A__header">
+            <h2>Наша командная работа основана<br>на принципах поведения 3 “A”</h2>
+        </div>
+        <div class="triple-A__wrapper">
+            <div class="triple-A__item">
+                <h3>Согласованность</h3>
+                <p><span>Я понимаю цели Компании,</span> и то как выполнение моих задач<br>влияет на их достижение</p>
+                <p><span>Я активно сотрудничаю</span> и взаимодействую c заинтересованными<br>сторонами</p>
+                <p><span>Я стремлюсь к четкости решений</span>, которые мы принимаем<br>и транслируем. Мне понятно что ожмдается от меня для<br>их исполнения</p>
+                <div class="triple-A__item__dis-or-like">
+                    <div class="triple-A__item__dis-like">
+                        <div class="triple-A__item__dis-like__header">
+                            <h4 class="like">Я поддерживаю</h4>
+                            <img src="https://i.ibb.co/h9KshtL/A-like-hand.png" alt="A-like-hand">
+                        </div>
+                        <p>
+                            • Открытый конструктивный диалог и обратную связь;<br>
+                            • Зафиксированные договоренности, вместо домыслов;<br>
+                            • Работу в духе единой команды.
+                        </p>
+                    </div>
+                    <img class="splitter" src="https://i.ibb.co/k9t8Rj0/A-splitter-line.png" alt="A-splitter-line">
+                    <div class="triple-A__item__dis-like">
+                        <div class="triple-A__item__dis-like__header">
+                            <h4 class="dislike">Я не поддерживаю</h4>
+                            <img src="https://i.ibb.co/XjMxFq3/A-dislike-hand.png" alt="A-dislike-hand">
+                        </div>
+                        <p>
+                            • Мышление исключительно в рамках своей функции и/или интересов;<br>
+                            • Долгие дискусии без принятия конкретных решений;<br>
+                            • Попытки угодить всем, принимая компромиссные, но<br>неэффективные решения.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="triple-A__item">
+                <h3>Ответственность</h3>
+                <p><span>Я придерживаюсь принятых решений</span> и несу личную ответственность за их реализацию</p>
+                <p><span>Я планирую свои действия</span> для достижения результата,учитывая необходимые ресурсы и время </p>
+                <p><span>Я несу ответственность за достижение командного результата,</span> даже если это выходит за рамки моих непосредственных обязанностей</p>
+                <div class="triple-A__item__dis-or-like">
+                    <div class="triple-A__item__dis-like">
+                        <div class="triple-A__item__dis-like__header">
+                            <h4 class="like">Я поддерживаю</h4>
+                            <img src="https://i.ibb.co/h9KshtL/A-like-hand.png" alt="A-like-hand">
+                        </div>
+                        <p>
+                            • Следование договоренностям и готовность к возможным изменениям;<br>
+                            • Доведение планов до конца, даже когда это непросто;<br>
+                            • Коммуникации со всеми, кто вовлечен в рабочий процесс.
+                        </p>
+                    </div>
+                    <img class="splitter" src="https://i.ibb.co/k9t8Rj0/A-splitter-line.png" alt="A-splitter-line">
+                    <div class="triple-A__item__dis-like">
+                        <div class="triple-A__item__dis-like__header">
+                            <h4 class="dislike">Я не поддерживаю</h4>
+                            <img src="https://i.ibb.co/XjMxFq3/A-dislike-hand.png" alt="A-dislike-hand">
+                        </div>
+                        <p>
+                            • Беспричинного пересмотра ранее принятых  решений;<br>
+                            • Перекладывания ответственности на других;<br>
+                            • Взаимодействия в духе “это не моя проблема”.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="triple-A__item">
+                <h3>Действие</h3>
+                <p><span>Я реализую принятые решения</span> качественно и своевременно</p>
+                <p><span>Я быстро корректирую свои действия,</span> если что-то идет не по плану</p>
+                <p><span>Я осознаю, что победа возможна только при полной реализации плана,</span> и я готов помогать участникам своей команды, если это потребуется</p>
+                <div class="triple-A__item__dis-or-like">
+                    <div class="triple-A__item__dis-like">
+                        <div class="triple-A__item__dis-like__header">
+                            <h4 class="like">Я поддерживаю</h4>
+                            <img src="https://i.ibb.co/h9KshtL/A-like-hand.png" alt="A-like-hand">
+                        </div>
+                        <p>
+                            • Фокус на реализации планов и контроль их исполнения;<br>
+                            • Предвосхищение ожиданий потребителей и заказчиков;<br>
+                            • Поиск, обмен и использование лучших практик для достижения целей.
+                        </p>
+                    </div>
+                    <img class="splitter" src="https://i.ibb.co/k9t8Rj0/A-splitter-line.png" alt="A-splitter-line">
+                    <div class="triple-A__item__dis-like">
+                        <div class="triple-A__item__dis-like__header">
+                            <h4 class="dislike">Я не поддерживаю</h4>
+                            <img src="https://i.ibb.co/XjMxFq3/A-dislike-hand.png" alt="A-dislike-hand">
+                        </div>
+                        <p>
+                            • Оправдания;<br>
+                            • Неспособность предвидеть проблемы, которые мешают реализации плана;<br>
+                            • Неспособность своевременно предвосхитить риски.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="splitter-block"></div>
+    <section class="links">
+        <h2>Информационные ресурсы и полезные ссылки</h2>
+        <div class="links__panels-wrapper">
+            <div class="links__panel">
+                <img src="https://i.ibb.co/C16tLt7/A-career-logo.png" alt="A-career-logo">
+                <h3>Наши карьерные<br>страницы </h3>
+                <p>Подписывайся и будь в курсе карьерных возможностей компании, актуальных новостей и знакомься с командой.</p>
+                <div class="links__panel__social">
+                    <a href=""><img src="https://i.ibb.co/28mMnLH/Facebook.png" alt="Facebook"></a>
+                    <a href=""><img src="https://i.ibb.co/Jyk7yyQ/instagram.png" alt="Instagram"></a>
+                    <a href=""><img src="https://i.ibb.co/fxKGjBG/vk.png" alt="Vk"></a>
+                </div>
+            </div>
+            <div class="links__panel">
+                <img src="https://i.ibb.co/D9d6gjf/A-fridge-logo.png" alt="A-career-logo">
+                <h3>«Холодильник новостей Аливарии»</h3>
+                <p>Здесь ты сможешь узнать все самые свежие новости от самых осведомленных инсайдеров – бутылочек нашего любимого пива. </p>
+                <div class="links__panel__social">
+                    <a href=""><img src="https://i.ibb.co/pxMgcyh/telegram.png" alt="Telegram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="links__down-panels">
+            <div class="links_down-panel-wrapper">
+                <a href=""><div class="links_down-panel">
+                    <img src="https://i.ibb.co/LZh689B/brand-mark-2.png" alt="Carlsberg">
+                </div></a>
+                <a href=""><p>Intranet Global</p></a>
+            </div>
+            <div class="links_down-panel-wrapper">
+                <a href=""><div class="links_down-panel">
+                    <img src="https://i.ibb.co/YyKkxGV/image-2.png" alt="Alivaria">
+                </div></a>
+                <a href=""><p>Intranet Belarus</p></a>
+            </div>
+            <div class="links_down-panel-wrapper">
+                <a href=""><div class="links_down-panel">
+                    <img src="https://i.ibb.co/vm2NwzL/Vector-1.png" alt="User">
+                </div></a>
+                <a href=""><p>Личный кабинет</p></a>
+            </div>
+            <div class="links_down-panel-wrapper">
+                <a href=""><div class="links_down-panel">
+                    <img src="https://i.ibb.co/6ZLMkmB/Vector.png" alt="Education">
+                </div></a>
+                <a href=""><p>Учебный портал</p></a>
+            </div>
+            <div class="links_down-panel-wrapper">
+                <a href=""><div class="links_down-panel">
+                    <img src="https://i.ibb.co/WfjrsX7/Vector-2.png" alt="ITHelp">
+                </div></a>
+                <a href=""><p>IT<br>Help</p></a>
+            </div>
+            <div class="links_down-panel-wrapper">
+                <a href=""><div class="links_down-panel">
+                    <img src="https://i.ibb.co/pLzdKfD/vacancy.png" alt="Vacancy">
+                </div></a>
+                <a href=""><p>Вакансии компании</p></a>
+            </div>
+        </div>
+    </section>
+    <section class="excursion">
+        <div class="play-btn">
+            <img src="https://i.ibb.co/7RBL59Q/A-excursion-play.png" alt="Excursion-play">
+            <p>Пройти виртуальную экскурсию по заводу</p>
+        </div>
+    </section>
+    <footer>
+        <h2>Будь в курсе всех наших событий!</h2>
+        <img src="https://i.ibb.co/bPzt7cM/A-like-big.png" alt="Footer-like">
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script>
+    document.addEventListener( 'DOMContentLoaded', function () {
+		new Splide('.splide', {
+            type   : 'loop',
+            perPage: 2,
+	        perMove: 2,
+            autoplay: true,
+            height: '160px',
+            pagination: false,
+            gap: '20px',
+            'arrowPath': 'M15.1728 9.45117L5.92222 0.226167C5.61913 -0.0759023 5.12843 -0.0753945 4.82586 0.227729C4.52351 0.530814 4.5243 1.02179 4.82742 1.32409L13.5274 10L4.82711 18.6759C4.52402 18.9783 4.52324 19.4689 4.82554 19.7721C4.97722 19.924 5.17593 20 5.37464 20C5.57285 20 5.77078 19.9245 5.92218 19.7736L15.1728 10.5489C15.3188 10.4036 15.4007 10.206 15.4007 10C15.4007 9.7941 15.3185 9.59668 15.1728 9.45117Z'
+        }).mount();
+
+        document.querySelectorAll('.splide__arrow svg').forEach(item => item.setAttribute("viewBox", "0 0 20 20"));
+	});
+    </script>
+</body>
+</html>
